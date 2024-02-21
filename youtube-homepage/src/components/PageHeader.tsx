@@ -1,5 +1,5 @@
 import logo from "../assets/react.svg";
-import { Bell, Menu, Upload, User, Mic, Search } from "lucide-react";
+import { Bell, Menu, Upload, User, Mic, Search, ArrowLeft } from "lucide-react";
 import { Button } from "../components/Button";
 import { useState } from "react";
 
@@ -20,15 +20,26 @@ function PageHeader() {
         </a>
       </div>
       <form
-        className={`md:flex hidden gap-4 flex-grow justify-center ${
-          showFullWidthSearch ? "flex" : "hidden"
+        className={` gap-4 flex-grow justify-center ${
+          showFullWidthSearch ? "flex" : "hidden md:flex"
         }`}
       >
+        {showFullWidthSearch && (
+          <Button
+            onClick={() => setShowFullWidthSearch(false)}
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="flex-shrink-0"
+          >
+            <ArrowLeft />
+          </Button>
+        )}
         <div className="flex flex-grow max-w-[600px]">
           <input
             type="search"
             placeholder="search"
-            className="rounded-1-full border border-secondary-border shadow-inner  shadow-secondary py-1 px-4 text-lg w-full focus:border-blue-500 outline-none"
+            className="rounded-l-full border border-secondary-border shadow-inner  shadow-secondary py-1 px-4 text-lg w-full focus:border-blue-500 outline-none"
           />
           <Button className="py-2 px-4 rounded-r-full border-secondary-border border border-1-0 flex-shrink-0">
             <Search />
